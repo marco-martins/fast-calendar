@@ -1,10 +1,21 @@
 {
-  "name": "simple-calendar",
+  "author": "Marco Martins",
+  "license": "ISC",
+  "name": "fast-calendar",
   "version": "1.0.0",
-  "description": "Simple javascript library to help you create calendars.",
-  "main": "lib/index.js",
+  "description": "Simple javascript library to help you generate calendars.",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marco-martins/fast-calendar"
+  },
+  "bugs": {
+    "url": "https://github.com/marco-martins/fast-calendar/issues"
+  },
+  "homepage": "https://github.com/marco-martins/fast-calendar#readme",
   "scripts": {
     "build": "tsc",
+    "prebuild": "rimraf ./dist",
     "start": "ts-node-dev --respawn src/index",
     "test": "vitest",
     "coverage": "vitest run --coverage",
@@ -17,11 +28,8 @@
     "javascript",
     "helpers"
   ],
-  "author": "Marco Martins",
-  "license": "ISC",
   "dependencies": {
-    "date-fns": "^2.29.3",
-    "remove": "^0.1.5"
+    "date-fns": "^2.29.3"
   },
   "devDependencies": {
     "@types/node": "^18.14.2",
