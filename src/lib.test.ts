@@ -1,3 +1,4 @@
+import { isSameDay } from "date-fns";
 import { describe, it, expect } from "vitest";
 import { FastCalendar } from "./lib";
 
@@ -24,6 +25,14 @@ describe("Simple calendar lib", () => {
     expect(calendar.month).toBe("February");
     expect(calendar.monthShort).toBe("Feb");
     expect(calendar.days).toBeInstanceOf(Array);
+  });
+
+  it("should return the first month of year", () => {
+    const date = new Date("2023-01-01");
+    const calendar = new FastCalendar({ date });
+
+    expect(calendar.year).toBe("2023");
+    expect(calendar.month).toBe("January");
   });
 
   describe("calendar days", () => {
@@ -62,7 +71,7 @@ describe("Simple calendar lib", () => {
     it("should return the today date", () => {
       const date = new Date();
       const calendar = new FastCalendar({ date });
-      const dayIndex = calendar.days.findIndex((i) => i.day === date.getDate());
+      const dayIndex = calendar.days.findIndex((i) => isSameDay(i.date, date));
       const today = calendar.days.at(dayIndex);
 
       const todayMock = {
